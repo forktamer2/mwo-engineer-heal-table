@@ -44,13 +44,23 @@
       font-weight: 650;
     }
     .by {
-      color: var(--muted);
-      font-size: 13px;
-      white-space: nowrap;
-    }
-    .by b {
       color: var(--text);
+      font-size: 15px;
+      font-weight: 800;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .by .tag {
+      color: #d4af37;
+      font-weight: 900;
+    }
+    .by .name {
+      font-weight: 900;
+    }
+    .by .label {
+      color: var(--muted);
       font-weight: 600;
+      font-size: 13px;
     }
     .sub {
       margin: 0 0 18px;
@@ -120,7 +130,9 @@
       .card { border-color: #ccc; pointer-events: none; }
       th { background: #f2f2f2; color: #111; }
       tr.fav td { background: #e8f5ee; color: #123; }
-      .by, .foot { color: #555; }
+      .by { color: #111; }
+      .by .tag { color: #8a6d00; }
+      .by .label { color: #555; }
       .by b { color: #111; }
     }
   </style>
@@ -149,7 +161,7 @@
 <body contenteditable="false" spellcheck="false">
   <div class="top">
     <h1>Инженеры · сухой хил</h1>
-    <div class="by">made by: <b>Last_player_</b></div>
+    <div class="by"><span class="label">made by:</span> <span class="tag">[-GW-]</span> <span class="name">Last_player_</span></div>
   </div>
   <p class="sub">
     Порядок: по убыванию хила в минуту<br />
@@ -237,7 +249,7 @@
 
   <div class="foot">
     <span>Только просмотр · скрин: F11 → Ctrl+− → Win+Shift+S</span>
-    <span>made by: <b style="color:var(--text);font-weight:600">Last_player_</b></span>
+    <span class="by"><span class="label">made by:</span> <span class="tag">[-GW-]</span> <span class="name">Last_player_</span></span>
   </div>
 </body>
 </html>
