@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru" contenteditable="false">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Инженеры · сухой хил</title>
+  <style>
+    :root {
+      --bg: #1a1a1a;
+      --card: #242424;
+      --line: #333;
+      --text: #e8e8e8;
+      --muted: #9a9a9a;
+      --fav: #1e3a2f;
+      --fav-text: #b8e0c8;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      -webkit-user-modify: read-only;
+      user-modify: read-only;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.35 "Segoe UI", system-ui, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: default;
+    }
+    .top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 650;
+    }
+    .by {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .by b {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .sub {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 12.5px;
+      max-width: 920px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: auto;
+      max-width: 100%;
+      pointer-events: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      white-space: nowrap;
+    }
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+    }
+    th {
+      font-size: 12px;
+      font-weight: 650;
+      color: var(--text);
+      text-align: right;
+      background: #2a2a2a;
+    }
+    th:nth-child(1), th:nth-child(2),
+    td:nth-child(1), td:nth-child(2) { text-align: left; }
+    th .asap {
+      display: block;
+      margin-top: 3px;
+      font-weight: 500;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    td { font-variant-numeric: tabular-nums; }
+    td.num { text-align: right; }
+    tr.fav td {
+      background: var(--fav);
+      color: var(--fav-text);
+    }
+    tr.fav td .muted { color: #8fbfa4; }
+    .stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+    .muted { color: var(--muted); font-size: 12px; }
+    .foot {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    @media print {
+      body { background: #fff; color: #111; padding: 8px; }
+      .card { border-color: #ccc; pointer-events: none; }
+      th { background: #f2f2f2; color: #111; }
+      tr.fav td { background: #e8f5ee; color: #123; }
+      .by, .foot { color: #555; }
+      .by b { color: #111; }
+    }
+  </style>
+  <script>
+    // Только просмотр: блокируем правку в браузере.
+    document.addEventListener("DOMContentLoaded", () => {
+      document.designMode = "off";
+      document.body.contentEditable = "false";
+      document.documentElement.contentEditable = "false";
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && ["c", "C", "a", "A", "p", "P", "0", "-", "=", "+"].includes(e.key)) {
+        return; // копирование / зум / печать — ок
+      }
+      if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i", "I", "j", "J", "c", "C"].includes(e.key))) {
+        return;
+      }
+      if (e.ctrlKey || e.metaKey) {
+        if (["x", "X", "v", "V", "z", "Z", "y", "Y"].includes(e.key)) e.preventDefault();
+      }
+    });
+    document.addEventListener("dragstart", (e) => e.preventDefault());
+    document.addEventListener("drop", (e) => e.preventDefault());
+  </script>
+</head>
+<body contenteditable="false" spellcheck="false">
+  <div class="top">
+    <h1>Инженеры · сухой хил</h1>
+    <div class="by">made by: <b>Last_player_</b></div>
+  </div>
+  <p class="sub">
+    Порядок: по убыванию хила в минуту (wiki L1). Таблица будет дополняться.
+    ASAP = as soon as possible — без ожидания полной шкалы, «зажим».
+    хил wiki — сайт L1→max. хил real / выстр/мин — ASAP, где есть замер.
+    Сухие = без катушки/клана/штрафа 2 инжа. ✓ = фаворит автотеста 1234.
+    Только просмотр.
+  </p>
+
+  <div class="card" contenteditable="false">
+    <table contenteditable="false">
+      <thead>
+        <tr>
+          <th>машина</th>
+          <th>эм-блок</th>
+          <th>хил wiki</th>
+          <th>хил real<span class="asap">ASAP</span></th>
+          <th>хил real полн.восст. vs ASAP</th>
+          <th>выстр/мин wiki→real<span class="asap">ASAP</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Тесла</td><td>Свет×2</td>
+          <td class="num">11143→12638</td>
+          <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+        </tr>
+        <tr class="fav">
+          <td>Тесла</td><td>✓Орион×2</td>
+          <td class="num">10685→12543</td>
+          <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+        </tr>
+        <tr>
+          <td>Эгида</td><td>Десерт×2</td>
+          <td class="num">10225→12132</td>
+          <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+        </tr>
+        <tr class="fav">
+          <td>Эгида</td><td>✓Весна×2</td>
+          <td class="num">9339→11961</td>
+          <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+        </tr>
+        <tr class="fav">
+          <td>Защитник</td><td>✓Сирена×2</td>
+          <td class="num">8548→13729</td>
+          <td class="num"><div class="stack">7748→12444<span class="muted">кд/дпм -9.36%</span></div></td>
+          <td class="num">7178→7748 (+8%)</td>
+          <td class="num">64.76→58.7</td>
+        </tr>
+        <tr>
+          <td>Барьер</td><td>Электрон×2</td>
+          <td class="num">7720→10808</td>
+          <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+        </tr>
+        <tr class="fav">
+          <td>Паладин</td><td>✓Ласточка×2</td>
+          <td class="num">6944→11352</td>
+          <td class="num"><div class="stack">6589→10773<span class="muted">кд/дпм -5.11%</span></div></td>
+          <td class="num">~5855→6589 (+12%)</td>
+          <td class="num">30.19→28.65</td>
+        </tr>
+        <tr class="fav">
+          <td>Грифон</td><td>✓Молния×2</td>
+          <td class="num">6745→12598</td>
+          <td class="num"><div class="stack">5753→10746<span class="muted">кд/дпм -14.70%</span></div></td>
+          <td class="num">3969→5753 (+45%)</td>
+          <td class="num">16.53→14.1</td>
+        </tr>
+        <tr>
+          <td>Феникс</td><td>Скат×2</td>
+          <td class="num">5079→11940</td>
+          <td class="num"><div class="stack">4275→10051<span class="muted">кд/дпм -15.82%</span></div></td>
+          <td class="num">3405→4275 (+26%)</td>
+          <td class="num">44.55→37.5</td>
+        </tr>
+        <tr>
+          <td>Креститель</td><td>Шмель×1</td>
+          <td class="num">5050→7200</td>
+          <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="foot">
+    <span>Только просмотр · скрин: F11 → Ctrl+− → Win+Shift+S</span>
+    <span>made by: <b style="color:var(--text);font-weight:600">Last_player_</b></span>
+  </div>
+</body>
+</html>
