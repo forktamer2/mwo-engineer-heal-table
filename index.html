@@ -12,8 +12,6 @@
       --line: #333;
       --text: #e8e8e8;
       --muted: #9a9a9a;
-      --fav: #1e3a2f;
-      --fav-text: #b8e0c8;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -108,11 +106,6 @@
     }
     td { font-variant-numeric: tabular-nums; }
     td.num { text-align: right; }
-    tr.fav td {
-      background: var(--fav);
-      color: var(--fav-text);
-    }
-    tr.fav td .muted { color: #8fbfa4; }
     .stack {
       display: flex;
       flex-direction: column;
@@ -133,7 +126,6 @@
       body { background: #fff; color: #111; padding: 8px; }
       .card { border-color: #ccc; pointer-events: none; }
       th { background: #f2f2f2; color: #111; }
-      tr.fav td { background: #e8f5ee; color: #123; }
       .by { color: #111; }
       .by .tag { color: #8a6d00; }
       .by .label { color: #555; }
@@ -172,7 +164,6 @@
     Таблица будет дополняться<br />
     ASAP = as soon as possible — без ожидания полной шкалы, «зажим»<br />
     Сухие = без катушки/клана/штрафа 2 инжа<br />
-    ✓ = фаворит автотеста 1234<br />
     кд/дпм: «−» вики завышает ROF; «+» вики занижает (только Шмель)<br />
     Только просмотр
   </p>
@@ -197,29 +188,29 @@
           <td class="num">7086.29→8008.81 (+13.02%)</td>
           <td class="num">50→79.30</td>
         </tr>
-        <tr class="fav">
-          <td>Эгида</td><td>✓Весна×2</td>
+        <tr>
+          <td>Эгида</td><td>Весна×2</td>
           <td class="num">9339→11961</td>
           <td class="num"><div class="stack">7786.67→9973.73<span class="muted">кд/дпм -16.61%</span></div></td>
           <td class="num">6093.91→7786.67 (+27.78%)</td>
           <td class="num">31.98→26.67</td>
         </tr>
-        <tr class="fav">
-          <td>Защитник</td><td>✓Сирена×2</td>
+        <tr>
+          <td>Защитник</td><td>Сирена×2</td>
           <td class="num">8548→13729</td>
           <td class="num"><div class="stack">7748→12444<span class="muted">кд/дпм -9.36%</span></div></td>
           <td class="num">7178→7748 (+8%)</td>
           <td class="num">64.76→58.7</td>
         </tr>
-        <tr class="fav">
-          <td>Паладин</td><td>✓Ласточка×2</td>
+        <tr>
+          <td>Паладин</td><td>Ласточка×2</td>
           <td class="num">6944→11352</td>
           <td class="num"><div class="stack">6589→10773<span class="muted">кд/дпм -5.11%</span></div></td>
           <td class="num">~5855→6589 (+12%)</td>
           <td class="num">30.19→28.65</td>
         </tr>
-        <tr class="fav">
-          <td>Грифон</td><td>✓Молния×2</td>
+        <tr>
+          <td>Грифон</td><td>Молния×2</td>
           <td class="num">6745→12598</td>
           <td class="num"><div class="stack">5753→10746<span class="muted">кд/дпм -14.70%</span></div></td>
           <td class="num">3969→5753 (+45%)</td>
@@ -237,8 +228,8 @@
           <td class="num">11143→12638</td>
           <td class="num">—</td><td class="num">—</td><td class="num">—</td>
         </tr>
-        <tr class="fav">
-          <td>Тесла</td><td>✓Орион×2</td>
+        <tr>
+          <td>Тесла</td><td>Орион×2</td>
           <td class="num">10685→12543</td>
           <td class="num">—</td><td class="num">—</td><td class="num">—</td>
         </tr>
